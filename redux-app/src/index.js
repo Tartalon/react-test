@@ -1,24 +1,46 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
 const reducer = (state = 0, action) => {
   switch (action.type) {
-    case "INC":
+    case 'INC':
       return state + 1;
+    case 'DEC':
+      return state - 1;
+    case 'DIS':
+      return state - state;
     default:
       return state;
   }
 };
 
+const inc = () => ({
+  type: 'INC',
+});
+
+const dec = () => ({
+  type: 'DEC',
+});
+
+const dis = () => ({
+  type: 'DIS',
+});
+
 const store = createStore(reducer);
 
-console.log(store.getState());
+document.getElementById('inc').addEventListener('click', () => {
+  store.dispatch(inc());
+});
 
-store.dispatch({ type: "INC" });
-console.log(store.getState());
+document.getElementById('dec').addEventListener('click', () => {
+  store.dispatch(dec());
+});
 
-// let state = reducer(undefined, {});
+document.getElementById('dis').addEventListener('click', () => {
+  store.dispatch(dis());
+});
 
-// state = reducer(state, { type: "INC" });
-// console.log(state);
-// state = reducer(state, { type: "INC" });
-// console.log(state);
+const update = () => {
+  document.getElementById('counter').textContent = store.getState();
+};
+
+store.subscribe(update);
