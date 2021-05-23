@@ -1,9 +1,9 @@
-import React from 'react';
-import { MainPage, CartPage } from '../pages';
-import AppHeader from '../app-header';
-import WithRestoService from '../hoc';
+import React from "react";
+import { MainPage, CartPage } from "../pages";
+import AppHeader from "../app-header";
+import WithRestoService from "../hoc";
 
-import Background from './food-bg.jpg';
+import Background from "./food-bg.jpg";
 
 const App = ({ RestoService }) => {
   console.log(RestoService.getMenuItems());
